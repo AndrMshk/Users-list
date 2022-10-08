@@ -1,0 +1,83 @@
+@import "./src/common/styles/variables";
+
+.formGroup {
+	position: relative;
+	input {
+		border: 1px solid #d0cfcf;
+		height: 54px;
+		width: 380px;
+		font-size: 16px;
+		line-height: 26px;
+		padding: 0 16px;
+		color: rgba(0, 0, 0, 0.87);
+		border-radius: 4px;
+		background: transparent;
+		outline: none;
+		&:-webkit-autofill {
+			transition: background-color 5000s ease-in-out 0s;
+		}
+		@media screen and (max-width: 450px) {
+			width: 328px;
+		}
+	}
+	&::after {
+		content: attr(data-placeholder);
+		position: absolute;
+		top: 26px;
+		left: 18px;
+		color: #7e7e7e;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 26px;
+		transform: translateY(-50%);
+		background-color: #f8f8f8;
+		transition: all 0.2s ease;
+	}
+	&:focus-within::after,
+	&.focused::after {
+		top: 0;
+		font-size: 12px;
+		padding: 0 3px;
+		left: 18px;
+		line-height: 14px;
+	}
+
+	.helperText {
+		position: absolute;
+		left: 16px;
+		top: 60px;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 14px;
+		color: #7E7E7E;
+	}
+	.errorMessage {
+		color: #cb3d40;
+	}
+}
+
+.error {
+	input:focus, input {
+		border-color: #cb3d40;
+		outline: auto #cb3d40;
+	}
+}
+
+.focused {
+	.formGroup::after {
+		top: 20px;
+		font-size: 12px;
+		padding: 0 3px;
+		left: 13px;
+		line-height: 14px;
+		color: #7E7E7E;
+		transition: all 0.2s ease;
+
+	}
+}
+
+.error.formGroup::after {
+	color: #cb3d40;
+}
+
+

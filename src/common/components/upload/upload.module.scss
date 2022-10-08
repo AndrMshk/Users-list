@@ -1,0 +1,71 @@
+@import "./src/common/styles/variables";
+
+.main {
+	position: relative;
+	width: 100%;
+	.wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 54px;
+		.button,
+		.fileName {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			background-color: $backgroundColor;
+			white-space: nowrap;
+			max-width: 100%;
+		}
+		.button, {
+			width: 83px;
+			border: 1px solid rgba(0, 0, 0, 0.87);
+			border-radius: 4px 0 0 4px;
+		}
+		.fileName {
+			padding-left: 16px;
+			justify-content: flex-start;
+			border: 1px solid #d0cfcf;
+			border-left: none;
+			border-radius: 0 4px 4px 0;
+			width: 100%;
+			overflow: hidden;
+			div {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.empty {
+				color: #7e7e7e;
+			}
+		}
+		.errorButton {
+			border: 2px solid $errorColor;
+			position: relative;
+		}
+		.errorFileName {
+			border: 2px solid $errorColor;
+			border-left: none;
+		}
+		input {
+			display: none;
+		}
+	}
+	.errorMessage {
+		position: absolute;
+		content: 'Error text';
+		left: 20px;
+		top: 54px;
+		font-family: 'Asap', serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 14px;
+		color: $errorColor;
+	}
+}
+
+
+
+

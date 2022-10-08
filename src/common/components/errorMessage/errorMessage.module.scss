@@ -1,0 +1,51 @@
+@import "./src/common/styles/variables";
+
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.4);
+	transition: opacity 500ms;
+	opacity: 0;
+	.popup {
+		margin: 100px auto;
+		padding: 20px;
+		background: #fff;
+		border-radius: 5px;
+		max-width: 300px;
+		position: relative;
+		h2 {
+			margin-top: 0;
+			margin-bottom: 10px;
+			color: #333;
+			font-family: Tahoma, Arial, sans-serif;
+		}
+		.close {
+			position: absolute;
+			top: 16px;
+			right: 20px;
+			font-size: 30px;
+			font-weight: bold;
+			text-decoration: none;
+			color: black;
+			cursor: pointer;
+		}
+		.errorMessage{
+			text-align: center;
+			word-wrap: break-word;
+		}
+		@media (max-width: 350px) {
+			max-width: 200px;
+		}
+	}
+}
+
+.open {
+	transition: opacity 500ms;
+	visibility: visible;
+	opacity: 1;
+}
+
+

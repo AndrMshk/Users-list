@@ -1,0 +1,35 @@
+.wrapper {
+	height: 650px;
+	background-image: url('../../assets/backgroundPicture.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 380px;
+		color: #FFFFFF;
+		h1 {
+			text-align: center;
+			margin-bottom: 21px;
+			font-weight: 400;
+			font-size: 40px;
+			line-height: 40px;
+		}
+		p {
+			text-align: center;
+			margin-bottom: 32px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 26px;
+		}
+		@media screen and (max-width: 400px) {
+			margin: 0 16px;
+		}
+	}
+	@media screen and (max-width: 768px) {
+		height: 500px;
+	}
+}

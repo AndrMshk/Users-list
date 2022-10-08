@@ -1,0 +1,23 @@
+.wrapper {
+	background-color: white;
+	.content {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 60px;
+		justify-content: space-between;
+		.buttonGroup {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 10px;
+		}
+		@media screen and (max-width: 1200px) {
+			padding: 0 32px;
+		}
+		@media screen and (max-width: 500px) {
+			padding: 0 16px;
+		}
+	}
+
+}

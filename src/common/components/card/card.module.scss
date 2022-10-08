@@ -1,0 +1,72 @@
+@import "./src/common/styles/variables";
+
+.card {
+	height: 254px;
+	width: 370px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	background-color: white;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+	border-radius: 10px;
+	@media screen and (max-width: 1200px) {
+		width: 282px;
+	}
+	@media screen and (max-width: 930px) {
+		width: 344px;
+	}
+	@media screen and (max-width: 730px) {
+		width: 328px;
+	}
+	img {
+		border-radius: 50%;
+	}
+	.description {
+		width: 100%;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.name,
+	.email,
+	.profession,
+	.phone {
+		width: 100%;
+		text-align: center;
+	}
+	.name,
+	.email{
+		position: relative;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		&::after {
+			content: attr(data-tooltip);
+			position: absolute;
+			top: 30px;
+			left: 50%;
+			pointer-events: none;
+			opacity: 0;
+			background: rgba(0, 0, 0, 0.87);
+			border-radius: 4px;
+			transition: opacity .15s ease-in-out;
+			display: block;
+			padding: 3px 16px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 26px;
+			color: #FFFFFF;
+		}
+		&:hover::after {
+			opacity: 1;
+		}
+	}
+
+}
+
+
+

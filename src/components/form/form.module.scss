@@ -1,0 +1,47 @@
+.wrapper {
+	flex-direction: column;
+	margin-top: 138px;
+	h1 {
+		text-align: center;
+		font-weight: 400;
+		font-size: 40px;
+		line-height: 40px;
+	}
+	form {
+		width: 380px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		.inputs {
+			width: 100%;
+			margin-top: 50px;
+			margin-bottom: 43px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			gap: 50px;
+		}
+		.radioButtons {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 13px;
+			margin-bottom: 47px;
+
+		}
+		button {
+			margin-top: 50px;
+			margin-bottom: 100px;
+		}
+		@media screen and (max-width: 450px) {
+			width: 328px;
+		}
+	}
+}
+
+
+
+
