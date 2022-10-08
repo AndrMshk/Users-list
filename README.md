@@ -14,7 +14,7 @@ This project was bootstrapped with Create React App
 
 ## Deployed to github-pages:
 
-https://AndrMshk.github.io/User-list
+https://AndrMshk.github.io/users-list
 
 ## Available Scripts
 
