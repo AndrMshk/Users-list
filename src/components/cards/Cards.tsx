@@ -13,13 +13,13 @@ export const Cards = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div id="users" className={`${container.container} ${style.wrapper}`}>
+    <section id="users" className={`${container.container} ${style.wrapper}`}>
       <h1>Working with GET request</h1>
       <div className={style.cards}>
         {users.map(user => <Card key={user.id} {...user} />)}
       </div>
       {currentPage !== Math.ceil(totalUsersCount / 6) &&
       <Button title="Show more" onClick={() => {dispatch(setUsersPageAction(currentPage + 1));}} />}
-    </div>
+    </section>
   );
 };

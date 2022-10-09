@@ -6,7 +6,7 @@ import { Button } from '../../common/components/button/Button';
 export const Main = () => {
 
   return (
-    <div className={`${container.container} ${style.wrapper}`}>
+    <section className={`${container.container} ${style.wrapper}`}>
       <div className={style.content}>
         <h1>Test assignment for front-end developer </h1>
         <p>
@@ -17,6 +17,6 @@ export const Main = () => {
         </p>
         <a href="#form"><Button title="Sign up" /></a>
       </div>
-    </div>
+    </section>
   );
 };

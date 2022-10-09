@@ -58,14 +58,14 @@ export const Form = () => {
 
 if (isRegisteredUser) {
   return (
-    <div className={`${container.container} ${style.wrapper}`}>
+    <section className={`${container.container} ${style.wrapper}`}>
       <h1>User successfully registered</h1>
       <div className={style.success}><img src={success} alt="success" /></div>
-    </div>
+    </section>
   )
 }
   return (
-    <div id="form" className={`${container.container} ${style.wrapper}`}>
+    <section id="form" className={`${container.container} ${style.wrapper}`}>
           <h1>Working with POST request</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className={style.inputs}>
@@ -143,7 +143,7 @@ if (isRegisteredUser) {
               error={errors.photo?.message} />
             <Button isDisabled={!isDirty || !isValid || !file} title="Sign up" isForSubmit />
           </form>
-    </div>
+    </section>
   );
 };
 
