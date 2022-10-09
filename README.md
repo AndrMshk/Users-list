@@ -7,6 +7,7 @@
 -   thunk
 -   axios
 -   scss
+-   CSS Modules
 -   classnames
 -   react-hook-form
 

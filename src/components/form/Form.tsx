@@ -21,9 +21,9 @@ export const Form = () => {
 
   const dispatch = useAppDispatch();
 
-  const positions = useAppSelector(state => state.users.positions);
-
   const [file, setFile] = useState<File | null>(null);
+
+  const positions = useAppSelector(state => state.users.positions);
 
   const {
     control,
@@ -33,7 +33,6 @@ export const Form = () => {
     setValue,
     setError,
     clearErrors,
-    watch,
     formState: { errors, isDirty, isValid },
   } = useForm<FormData>(
     {
@@ -47,11 +46,17 @@ export const Form = () => {
       },
     });
 
-  const addPhotoHandler = () => {setValue('photo', file);};
+  const setPhotoHandler = (file: File | null) => {
+    setValue('photo', file, { shouldValidate: true });
+  };
+
+  const clearErrorsHandler = () => {clearErrors(['photo']);};
+
+  const setErrorHandler = (errorMessage: string) => {
+    setError('photo', { type: 'custom', message: errorMessage });
+  };
 
   const onSubmit: SubmitHandler<FormData> = data => {
-    addPhotoHandler();
-    // console.log(data);
     dispatch(createProfile(data));
     setFile(null);
     reset();
@@ -128,16 +133,15 @@ export const Form = () => {
               {...register('position', { required: true })} />)}
         </div>
         <Upload
-          setFile={(file) => {
-            setFile(file);
-            setValue('photo', file);
-          }}
-          clearErrors={() => clearErrors(['photo'])}
-          setError={(errorMessage) => setError('photo', { type: 'custom', message: errorMessage })}
           file={file}
+          setFile={setFile}
+          setPhoto={setPhotoHandler}
+          clearErrors={clearErrorsHandler}
+          setError={setErrorHandler}
           error={errors.photo?.message} />
         <Button isDisabled={!isDirty || !isValid || !file} title="Sign up" isForSubmit />
       </form>
     </div>
   );
 };
+

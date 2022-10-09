@@ -1,20 +1,23 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import style from './upload.module.scss';
 import classnames from 'classnames';
 
 type UploadPropsType = {
   error?: string
-  file: File | null
-  setFile: (file: File | null) => void
+  setPhoto: (file: File | null) => void
   setError: (errorMessage: string) => void
   clearErrors: () => void
+  file: File | null
+  setFile: (file: File | null) => void
 }
 
-export const Upload: FC<UploadPropsType> = ({ file, setFile, error, setError, clearErrors }) => {
+export const Upload: FC<UploadPropsType> = (
+  { error, setError, clearErrors, setPhoto, setFile, file }) => {
 
   const onChangeFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
+    if (e.target.files && e.target.files.length) {
       const photo = e.target.files[0];
+      setFile(photo);
       const img = new Image();
       img.src = URL.createObjectURL(photo);
       img.onload = () => {
@@ -22,15 +25,20 @@ export const Upload: FC<UploadPropsType> = ({ file, setFile, error, setError, cl
           setError('Minimum size of photo 70x70px');
           return;
         } else {clearErrors();}
-        if (photo.type !== 'image/jpeg' && photo.type !== 'image/jpg') {
-          setError('Invalid image');
-        } else if (photo.size >= 5242880) {
+        if (photo.size >= 5242880) {
           setError('To big image size');
+          return;
         } else {
-          setFile(photo);
+          setPhoto(photo);
           clearErrors();
+          return;
         }
       };
+      setError('Invalid image');
+      return;
+    } else {
+      clearErrors();
+      setFile(null);
     }
   };
 
@@ -41,7 +49,7 @@ export const Upload: FC<UploadPropsType> = ({ file, setFile, error, setError, cl
           <div>Upload</div>
         </div>
         <div className={classnames(style.fileName, { [style.errorFileName]: error })}>
-          <div className={classnames({ [style.empty]: file })}>
+          <div className={classnames({ [style.empty]: !file })}>
             {file ? file.name : 'Upload your photo'}
           </div>
         </div>
@@ -50,7 +58,8 @@ export const Upload: FC<UploadPropsType> = ({ file, setFile, error, setError, cl
           accept=".jpeg,.jpg"
           type="file"
           id="file-upload"
-          onChange={onChangeFileHandler} />
+          onChange={onChangeFileHandler}
+          onError={() => {setError('Invalid image');}} />
       </label>
       {error && <div className={style.errorMessage}>{error}</div>}
     </div>
