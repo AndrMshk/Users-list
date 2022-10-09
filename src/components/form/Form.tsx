@@ -32,6 +32,8 @@ export const Form = () => {
     register,
     setValue,
     setError,
+    clearErrors,
+    watch,
     formState: { errors, isDirty, isValid },
   } = useForm<FormData>(
     {
@@ -49,6 +51,7 @@ export const Form = () => {
 
   const onSubmit: SubmitHandler<FormData> = data => {
     addPhotoHandler();
+    // console.log(data);
     dispatch(createProfile(data));
     setFile(null);
     reset();
@@ -126,10 +129,11 @@ export const Form = () => {
         </div>
         <Upload
           setFile={(file) => {
-            setValue('photo', file);
             setFile(file);
+            setValue('photo', file);
           }}
-          setError={(error) => setError('photo', error)}
+          clearErrors={() => clearErrors(['photo'])}
+          setError={(errorMessage) => setError('photo', { type: 'custom', message: errorMessage })}
           file={file}
           error={errors.photo?.message} />
         <Button isDisabled={!isDirty || !isValid || !file} title="Sign up" isForSubmit />
