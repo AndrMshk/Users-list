@@ -10,6 +10,7 @@ type ButtonPropsType = {
 }
 
 export const Button: FC<ButtonPropsType> = ({ onClick, title, isDisabled, isForSubmit }) => {
+
   return (
     <button
       onClick={onClick}

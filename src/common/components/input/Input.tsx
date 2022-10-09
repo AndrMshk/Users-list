@@ -15,6 +15,7 @@ type InputPropsType = {
 
 export const Input: FC<InputPropsType> = forwardRef(
   ({ type, error, name, placeholder, helperText, onChange, value, onBlur }, _) => {
+
     return (
       <div
         data-placeholder={placeholder}

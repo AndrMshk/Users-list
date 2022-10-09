@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png';
 import { Button } from '../../common/components/button/Button';
 
 export const Header = () => {
+
   return (
     <div className={`${style.wrapper}`}>
       <div className={`${container.container} ${style.content}`}>

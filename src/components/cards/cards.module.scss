@@ -1,3 +1,6 @@
+@import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
+
 .wrapper {
 	margin-top: 140px;
 	flex-direction: column;
@@ -9,13 +12,9 @@
 		margin-bottom: 50px;
 	}
 	.cards {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@include flex(center, row, center);
 		flex-wrap: wrap;
 		gap: 29px;
-		//padding:  50px 0 54px 0;
-
 		@media screen and (max-width: 768px) {
 			gap: 16px;
 		}
@@ -23,7 +22,7 @@
 			gap: 20px;
 		}
 	}
-button {
-	margin-top: 54px;
-}
+	button {
+		margin-top: 54px;
+	}
 }

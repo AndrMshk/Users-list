@@ -1,3 +1,6 @@
+@import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
+
 .tooltip {
 	position: relative;
 	cursor: pointer;

@@ -1,15 +1,16 @@
 @import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
 
 .formGroup {
 	position: relative;
 	input {
-		border: 1px solid #d0cfcf;
+		border: 1px solid $inputBorderColor;
 		height: 54px;
 		width: 380px;
 		font-size: 16px;
 		line-height: 26px;
 		padding: 0 16px;
-		color: rgba(0, 0, 0, 0.87);
+		color: $textColor;
 		border-radius: 4px;
 		background: transparent;
 		outline: none;
@@ -25,12 +26,12 @@
 		position: absolute;
 		top: 26px;
 		left: 18px;
-		color: #7e7e7e;
+		color: $inputLabelColor;
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 26px;
 		transform: translateY(-50%);
-		background-color: #f8f8f8;
+		background-color: $backgroundColor;
 		transition: all 0.2s ease;
 	}
 	&:focus-within::after,
@@ -41,25 +42,21 @@
 		left: 18px;
 		line-height: 14px;
 	}
-
 	.helperText {
 		position: absolute;
 		left: 16px;
-		top: 60px;
-		font-weight: 400;
+		top: 56px;
 		font-size: 12px;
-		line-height: 14px;
-		color: #7E7E7E;
+		color: $inputLabelColor;
 	}
 	.errorMessage {
-		color: #cb3d40;
+		color: $errorColor;
 	}
 }
 
 .error {
 	input:focus, input {
-		border-color: #cb3d40;
-		outline: auto #cb3d40;
+		border: 2px solid $errorColor;
 	}
 }
 
@@ -70,14 +67,13 @@
 		padding: 0 3px;
 		left: 13px;
 		line-height: 14px;
-		color: #7E7E7E;
+		color: $inputLabelColor;
 		transition: all 0.2s ease;
-
 	}
 }
 
 .error.formGroup::after {
-	color: #cb3d40;
+	color: $errorColor;
 }
 
 

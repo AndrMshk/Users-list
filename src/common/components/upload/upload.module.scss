@@ -1,19 +1,16 @@
 @import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
 
 .main {
 	position: relative;
 	width: 100%;
 	.wrapper {
+		@include flex(center, row, center);
 		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		height: 54px;
 		.button,
 		.fileName {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			@include flex(center, row, center);
 			height: 100%;
 			background-color: $backgroundColor;
 			white-space: nowrap;
@@ -21,13 +18,13 @@
 		}
 		.button, {
 			width: 83px;
-			border: 1px solid rgba(0, 0, 0, 0.87);
+			border: 1px solid $textColor;
 			border-radius: 4px 0 0 4px;
 		}
 		.fileName {
 			padding-left: 16px;
 			justify-content: flex-start;
-			border: 1px solid #d0cfcf;
+			border: 1px solid $inputBorderColor;
 			border-left: none;
 			border-radius: 0 4px 4px 0;
 			width: 100%;
@@ -37,10 +34,9 @@
 				text-overflow: ellipsis;
 			}
 			.empty {
-				color: #7e7e7e;
+				color: $inputLabelColor;
 			}
 		}
-
 		.errorButton {
 			border: 2px solid $errorColor;
 			position: relative;
@@ -55,14 +51,9 @@
 	}
 	.errorMessage {
 		position: absolute;
-		content: 'Error text';
 		left: 20px;
-		top: 54px;
-		font-family: 'Asap', serif;
-		font-style: normal;
-		font-weight: 400;
+		top: 56px;
 		font-size: 12px;
-		line-height: 14px;
 		color: $errorColor;
 	}
 }

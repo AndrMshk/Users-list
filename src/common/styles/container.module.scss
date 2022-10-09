@@ -1,9 +1,9 @@
+@import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
+
 .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex(center, row, center);
 	width: 100%;
 	max-width: 1170px;
 	margin: 0 auto;
-	box-sizing: border-box;
 }

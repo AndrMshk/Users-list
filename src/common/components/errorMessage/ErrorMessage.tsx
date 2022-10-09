@@ -17,7 +17,7 @@ export const ErrorMessage: FC<ErrorMessagePropsType> = ({ error }) => {
       <div className={style.popup}>
         <h2>Error</h2>
         <span
-          onClick={() => {dispatch(setAppErrorAction(''));}}
+          onClick={() => {dispatch(setAppErrorAction(null));}}
           className={style.close}
         >&times;
         </span>

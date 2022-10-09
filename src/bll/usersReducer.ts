@@ -1,13 +1,14 @@
-import { FormDataType, GetUsersParamsType, PositionType, ThunkType, UserType } from './types';
+import { FormDataType, GetUsersParamsType, PositionType, ServerError, ThunkType, UserType } from './types';
 import { setAppErrorAction, setAppIsLoadingAction } from './appReducer';
 import { API } from '../api/mainAPI';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 const initialState = {
   currentPage: 1,
   totalUsersCount: 0,
   users: [] as UserType[],
   positions: [] as PositionType[],
+  isRegisteredUser: false,
 };
 
 export const usersReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
@@ -20,6 +21,8 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
       return { ...state, currentPage: action.currentPage };
     case 'users/SET-POSITION':
       return { ...state, positions: [...action.positions] };
+    case 'users/SET-REGISTERED-USER':
+      return { ...state, isRegisteredUser: true };
     default:
       return state;
   }
@@ -30,16 +33,16 @@ type InitialStateType = typeof initialState
 export const setUsersAction = (users: UserType[], totalUsersCount: number) =>
   ({ type: 'users/SET-USERS', users, totalUsersCount } as const);
 export const resetUsersAction = () => ({ type: 'users/RESET-USERS' } as const);
-export const setUsersPageAction = (currentPage: number) =>
-  ({ type: 'users/SET-USERS-PAGE', currentPage } as const);
-export const setPositionAction = (positions: PositionType[]) =>
-  ({ type: 'users/SET-POSITION', positions } as const);
+export const setUsersPageAction = (currentPage: number) => ({ type: 'users/SET-USERS-PAGE', currentPage } as const);
+export const setPositionAction = (positions: PositionType[]) => ({ type: 'users/SET-POSITION', positions } as const);
+export const setRegisteredUserAction = () => ({ type: 'users/SET-REGISTERED-USER' } as const);
 
 export type ActionsType =
   | ReturnType<typeof setUsersAction>
   | ReturnType<typeof resetUsersAction>
   | ReturnType<typeof setUsersPageAction>
   | ReturnType<typeof setPositionAction>
+  | ReturnType<typeof setRegisteredUserAction>
 
 export const setUsers = (params: GetUsersParamsType): ThunkType => async dispatch => {
   try {
@@ -78,6 +81,7 @@ export const createProfile = (data: FormDataType): ThunkType => async(dispatch, 
     dispatch(setAppIsLoadingAction(true));
     const token = await API.getToken();
     await API.createProfile(token.data.token, data);
+    dispatch(setRegisteredUserAction());
     dispatch(resetUsersAction());
     const currentPage = getState().users.currentPage;
     if (currentPage !== 1) {
@@ -87,7 +91,10 @@ export const createProfile = (data: FormDataType): ThunkType => async(dispatch, 
     }
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      dispatch(setAppErrorAction(error.message));
+      const serverError = error as AxiosError<ServerError>;
+      if (serverError && serverError.response) {
+        dispatch(setAppErrorAction(serverError.response.data.message));
+      }
     } else {
       dispatch(setAppErrorAction('Some error'));
     }
@@ -95,3 +102,4 @@ export const createProfile = (data: FormDataType): ThunkType => async(dispatch, 
     dispatch(setAppIsLoadingAction(false));
   }
 };
+

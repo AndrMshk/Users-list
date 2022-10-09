@@ -12,6 +12,7 @@ type RadioButtonPropsType = {
 
 export const RadioButton = forwardRef(
   (props: RadioButtonPropsType, ref: LegacyRef<HTMLInputElement> | undefined) => {
+
     return (
       <div className={style.radio}>
         <input

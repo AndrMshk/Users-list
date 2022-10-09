@@ -1,15 +1,13 @@
 @import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
 
 .card {
+	@include flex(space-between, column, center);
+	gap: 20px;
 	height: 254px;
 	width: 370px;
 	padding: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	gap: 20px;
-	background-color: white;
+	background-color: $cardBackgroundColor;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 26px;
@@ -27,10 +25,8 @@
 		border-radius: 50%;
 	}
 	.description {
+		@include flex(center, column, center);
 		width: 100%;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 	}
 	.name,
 	.email,
@@ -40,7 +36,7 @@
 		text-align: center;
 	}
 	.name,
-	.email{
+	.email {
 		position: relative;
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -51,7 +47,7 @@
 			left: 50%;
 			pointer-events: none;
 			opacity: 0;
-			background: rgba(0, 0, 0, 0.87);
+			background: $textColor;
 			border-radius: 4px;
 			transition: opacity .15s ease-in-out;
 			display: block;
@@ -59,13 +55,12 @@
 			font-weight: 400;
 			font-size: 16px;
 			line-height: 26px;
-			color: #FFFFFF;
+			color: $cardBackgroundColor;
 		}
 		&:hover::after {
 			opacity: 1;
 		}
 	}
-
 }
 
 

@@ -1,6 +1,13 @@
+@import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
+
 .wrapper {
 	flex-direction: column;
 	margin-top: 138px;
+	color: $textColor;
+	.success {
+		margin: 50px 0;
+	}
 	h1 {
 		text-align: center;
 		font-weight: 400;
@@ -8,29 +15,20 @@
 		line-height: 40px;
 	}
 	form {
+		@include flex(space-between, column, center);
 		width: 380px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
 		.inputs {
+			@include flex(space-between, column, center);
+			gap: 50px;
 			width: 100%;
 			margin-top: 50px;
 			margin-bottom: 43px;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: center;
-			gap: 50px;
 		}
 		.radioButtons {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
+			@include flex(space-between, column, flex-start);
 			gap: 13px;
+			width: 100%;
 			margin-bottom: 47px;
-
 		}
 		button {
 			margin-top: 50px;

@@ -1,4 +1,5 @@
 @import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
 
 .button {
 	border-radius: 80px;
@@ -9,16 +10,17 @@
 	line-height: 26px;
 	cursor: pointer;
 	padding: 4px 24px;
+	color: $textColor;
 	&:hover {
-		background-color: #ffe302;
+		background-color: $hoverColor;
 	}
 }
 
 .disabled {
-	background-color: #b4b4b4;
-	color: #FFFFFF;
+	background-color: $disabledBackgroundColor;
+	color: $disabledColor;
 	&:hover {
-		background-color: #b4b4b4;
+		background-color: $disabledBackgroundColor;
 	}
 }
 

@@ -1,48 +1,42 @@
+@import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
+
 .wrapper {
+	@include flex(center, column, center);
 	position: fixed;
-	top:0;
+	top: 0;
 	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	height: 100%;
 	width: 100%;
-	z-index: 10;
-	//opacity: 0.2;
-	background: rgba(0,0,0,0.4);
+	z-index: 100;
+	background: $modalBackgroundColor;
 	.spinner {
 		width: 56px;
 		height: 56px;
 		border-radius: 50%;
-		border: 8px solid #00BDD3;
-		animation: spinner-bulqg1 0.8s infinite linear alternate,
+		border: 8px solid $secondaryColor;
+		animation: spinner-bulqg 0.8s infinite linear alternate,
 		spinner-oaa3wk 1.6s infinite linear;
 	}
-	@keyframes spinner-bulqg1 {
+	@keyframes spinner-bulqg {
 		0% {
 			clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
 		}
-
 		12.5% {
 			clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
 		}
-
 		25% {
 			clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
 		}
-
 		50% {
 			clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
 		}
-
 		62.5% {
 			clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
 		}
-
 		75% {
 			clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
 		}
-
 		100% {
 			clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
 		}
@@ -51,15 +45,12 @@
 		0% {
 			transform: scaleY(1) rotate(0deg);
 		}
-
 		49.99% {
 			transform: scaleY(1) rotate(135deg);
 		}
-
 		50% {
 			transform: scaleY(-1) rotate(0deg);
 		}
-
 		100% {
 			transform: scaleY(-1) rotate(-135deg);
 		}

@@ -1,4 +1,5 @@
 @import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
 
 .overlay {
 	position: fixed;
@@ -6,21 +7,20 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: rgba(0, 0, 0, 0.4);
-	transition: opacity 500ms;
+	background: $modalBackgroundColor;
+	transition: opacity 1s;
 	opacity: 0;
 	.popup {
 		margin: 100px auto;
 		padding: 20px;
-		background: #fff;
+		background: $backgroundColor;
 		border-radius: 5px;
 		max-width: 300px;
 		position: relative;
 		h2 {
 			margin-top: 0;
 			margin-bottom: 10px;
-			color: #333;
-			font-family: Tahoma, Arial, sans-serif;
+			color: $textColor;
 		}
 		.close {
 			position: absolute;
@@ -29,7 +29,7 @@
 			font-size: 30px;
 			font-weight: bold;
 			text-decoration: none;
-			color: black;
+			color: $textColor;
 			cursor: pointer;
 		}
 		.errorMessage{
@@ -43,7 +43,7 @@
 }
 
 .open {
-	transition: opacity 500ms;
+	transition: opacity 1s;
 	visibility: visible;
 	opacity: 1;
 }

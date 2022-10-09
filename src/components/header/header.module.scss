@@ -1,15 +1,14 @@
+@import "./src/common/styles/variables";
+@import "./src/common/styles/mixins";
+
 .wrapper {
 	background-color: white;
 	.content {
-		display: flex;
-		align-items: center;
+		@include flex(space-between, row, center);
 		width: 100%;
 		height: 60px;
-		justify-content: space-between;
 		.buttonGroup {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
+			@include flex(space-between, row, center);
 			gap: 10px;
 		}
 		@media screen and (max-width: 1200px) {
@@ -19,5 +18,4 @@
 			padding: 0 16px;
 		}
 	}
-
 }

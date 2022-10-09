@@ -4,6 +4,7 @@ import style from './main.module.scss';
 import { Button } from '../../common/components/button/Button';
 
 export const Main = () => {
+
   return (
     <div className={`${container.container} ${style.wrapper}`}>
       <div className={style.content}>

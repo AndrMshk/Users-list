@@ -34,3 +34,7 @@ export type FormDataType = {
   position: string
   photo: File | null
 }
+
+export type ServerError = {
+  message: string
+}
