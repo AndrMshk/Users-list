@@ -1,6 +1,6 @@
 # Users list
 
-##Stack:
+## Stack:
 -   TypeScript 
 -   React
 -   Redux 
